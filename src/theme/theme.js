@@ -1,4 +1,13 @@
 import { css } from "styled-components";
+import { Chango, Space_Mono } from "@next/font/google";
+
+const chango = Chango({ subsets: ["latin"], weight: ["400"] });
+
+const spaceMono = Space_Mono({
+  weight: ["400", "700"],
+  style: ["normal", "italic"],
+  subsets: ["latin"],
+});
 
 const sizes = {
   xxs: "10px",
@@ -34,14 +43,15 @@ const spacing = {
 
 const pallette = {
   white: "#FFFFFF",
+  grey: "#eeeeee",
   black: "#000000",
   primary: "#2569B0",
   secondary: "#da964f",
 };
 
 const fonts = {
-  base: "'Space Mono', monospace",
-  alt: "'Chango', cursive",
+  base: spaceMono.style.fontFamily,
+  alt: chango.style.fontFamily,
 };
 
 const getTheme = (generalSettings) => ({
@@ -208,6 +218,7 @@ const getTheme = (generalSettings) => ({
 
   spacing,
   sizes,
+  pallette,
 });
 
 export default getTheme;

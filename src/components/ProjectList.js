@@ -30,6 +30,7 @@ const ProjectList = ({ projects, ...props }) => {
     <Grid>
       {projects?.map(({ fields, sys }) => {
         const href = generateEntryUrl({ fields, sys });
+
         const isImageLandscape = isLandscape(
           fields?.mainImage?.fields?.file?.details?.image
         );
