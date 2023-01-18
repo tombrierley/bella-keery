@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "serve": "serve out/",
     "export": "next export",
     "lint": "next lint"
   },
@@ -22,6 +23,7 @@
   "devDependencies": {
     "eslint": "8.29.0",
     "eslint-config-next": "13.0.6",
-    "eslint-config-prettier": "^8.5.0"
+    "eslint-config-prettier": "^8.5.0",
+    "serve": "^14.1.2"
   }
 }

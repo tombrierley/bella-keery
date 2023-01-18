@@ -1,7 +1,10 @@
 import PageNotFound from "@components/PageNotFound";
 import Page from "@components/Page";
 
-import { fetchProjectContentBySlug } from "@services/contentful";
+import {
+  fetchProjectContentBySlug,
+  fetchAllProjects,
+} from "@services/contentful";
 
 const CmsPage = ({ error, project, general, ...props }) => {
   if (error) return <PageNotFound {...general} />;
@@ -10,8 +13,16 @@ const CmsPage = ({ error, project, general, ...props }) => {
 };
 
 export async function getStaticPaths() {
+  const { projects } = await fetchAllProjects(false);
+
+  const paths = projects.map((projects) => ({
+    params: {
+      slug: projects.fields.slug,
+    },
+  }));
+
   return {
-    paths: [{ params: { slug: "*" } }],
+    paths,
     fallback: true,
   };
 }

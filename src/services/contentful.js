@@ -60,6 +60,23 @@ export const fetchPageContentBySlug = async (slug) => {
   }
 };
 
+export const fetchAllPages = async () => {
+  try {
+    const response = await client.getEntries({
+      content_type: "page",
+      include: 2,
+    });
+
+    if (!response?.items?.length) {
+      return { error: true };
+    }
+
+    return { error: false, pages: response.items };
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
 export const fetchProjectContentBySlug = async (slug) => {
   try {
     const response = await client.getEntries({
@@ -73,6 +90,23 @@ export const fetchProjectContentBySlug = async (slug) => {
     }
 
     return { error: false, project: response.items[0].fields };
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+export const fetchAllProjects = async () => {
+  try {
+    const response = await client.getEntries({
+      content_type: "project",
+      include: 2,
+    });
+
+    if (!response?.items?.length) {
+      return { error: true };
+    }
+
+    return { error: false, projects: response.items };
   } catch (error) {
     throw new Error(error);
   }
