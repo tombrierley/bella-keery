@@ -1,5 +1,6 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import { ServerStyleSheet } from "styled-components";
+import Script from "next/script";
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -36,6 +37,20 @@ export default class MyDocument extends Document {
       <Html lang="en-gb">
         <Head>
           <link href="/favicon.ico" rel="icon" />
+
+          <Script
+            src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
+            strategy="afterInteractive"
+          />
+          <Script id="google-analytics" strategy="afterInteractive">
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+
+              gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}');
+            `}
+          </Script>
         </Head>
 
         <body>
