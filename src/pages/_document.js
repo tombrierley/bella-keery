@@ -37,6 +37,7 @@ export default class MyDocument extends Document {
       <Html lang="en-gb">
         <Head>
           <link href="/favicon.ico" rel="icon" />
+          <link rel="manifest" href="/manifest.webmanifest" />
 
           <Script
             src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}

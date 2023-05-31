@@ -80,7 +80,7 @@ const getTheme = (generalSettings) => ({
   layout: {
     appMaxWidth: "1024px",
     containerPadding: spacing.base,
-    paddingTop: spacing.xxxLarge,
+    paddingTop: spacing.xxLarge,
   },
   grid: {
     gutter: spacing.base,

@@ -10,7 +10,7 @@ import Footer from "@components/Footer";
 import { SettingsContext } from "@providers/settings";
 
 const MainContent = styled.main`
-  padding-top: ${(props) => props.theme.spacing.large};
+  padding-top: ${(props) => props.theme.spacing.medium};
   min-height: 100vh;
 
   ${(props) => props.theme.breakpoints.small`

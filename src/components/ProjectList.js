@@ -10,12 +10,15 @@ import generateEntryUrl from "@utils/generateEntryUrl";
 import isLandscape from "@utils/isLandscape";
 
 const GridLink = styled.a`
+  position: relative;
   text-decoration: none;
   cursor: pointer;
+  z-index: 1;
+  display: block;
 
   &:hover {
     filter: brightness(60%);
-    text-decoration: none;
+    text-decoration: underline;
   }
 `;
 
