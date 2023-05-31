@@ -101,25 +101,33 @@ const GlobalStyles = createGlobalStyle`
   h4 {
     color: ${({ theme }) => theme.typography.h4.color};
     font-family: ${({ theme }) => theme.typography.h4.fontFamily};
-    font-size: ${({ theme }) => theme.typography.h4.fontSize};
+    font-size: ${({ theme }) => theme.typography.h4.fontSizeMobile};
     font-weight: ${({ theme }) => theme.typography.h4.fontWeight};
     letter-spacing: ${({ theme }) => theme.typography.h4.letterSpacing};
     line-height: ${({ theme }) => theme.typography.h4.lineHeight};
     margin-bottom: ${({ theme }) => theme.typography.h4.marginBottom};
     margin-top: ${({ theme }) => theme.typography.h4.marginTop};
     text-transform: ${({ theme }) => theme.typography.h4.textTransform};
+
+    ${(props) => props.theme.breakpoints.medium`
+      font-size: ${({ theme }) => theme.typography.h4.fontSize};
+    `}
   }
 
   h5 {
     color: ${({ theme }) => theme.typography.h5.color};
     font-family: ${({ theme }) => theme.typography.h5.fontFamily};
-    font-size: ${({ theme }) => theme.typography.h5.fontSize};
+    font-size: ${({ theme }) => theme.typography.h5.fontSizeMobile};
     font-weight: ${({ theme }) => theme.typography.h5.fontWeight};
     letter-spacing: ${({ theme }) => theme.typography.h5.letterSpacing};
     line-height: ${({ theme }) => theme.typography.h5.lineHeight};
     margin-bottom: ${({ theme }) => theme.typography.h5.marginBottom};
     margin-top: ${({ theme }) => theme.typography.h5.marginTop};
     text-transform: ${({ theme }) => theme.typography.h5.textTransform};
+
+    ${(props) => props.theme.breakpoints.medium`
+      font-size: ${({ theme }) => theme.typography.h5.fontSize};
+    `}
   }
 
   h6 {

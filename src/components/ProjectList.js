@@ -23,7 +23,8 @@ const GridLink = styled.a`
 `;
 
 const GridText = styled.div`
-  padding: ${(props) => props.theme.spacing.base} 0;
+  padding: ${(props) => props.theme.spacing.small} 0
+    ${(props) => props.theme.spacing.base} 0;
 `;
 
 const ProjectList = ({ projects, ...props }) => {
