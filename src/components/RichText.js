@@ -1,31 +1,40 @@
 import styled from "styled-components";
 import Link from "next/link";
+import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 
 import ImageLoader from "@components/ImageLoader";
 import Grid from "@components/Grid";
 import GridItem from "@components/GridItem";
 
-import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+const TextContainer = styled.article`
+  text-align: center;
+
+  ${(props) => props.theme.breakpoints.medium`
+    padding: ${(props) => props.theme.spacing.large}; 0;
+  `}
+
+  ${(props) => props.theme.breakpoints.large`
+    padding: ${(props) => props.theme.spacing.xxLarge}; 0;
+  `}
+`;
+
+const TextSection = styled.article`
+  padding: ${(props) => props.theme.spacing.base}; 0;
+`;
 
 const RichText = ({ contentColumn1, contentColumn2, contentColumn3 }) => {
   return (
-    <Grid>
+    <TextContainer>
       {!!contentColumn1 && (
-        <GridItem cols={4}>
-          {documentToReactComponents(contentColumn1)}
-        </GridItem>
+        <TextSection>{documentToReactComponents(contentColumn1)}</TextSection>
       )}
       {!!contentColumn2 && (
-        <GridItem cols={4}>
-          {documentToReactComponents(contentColumn2)}
-        </GridItem>
+        <TextSection>{documentToReactComponents(contentColumn2)}</TextSection>
       )}
       {!!contentColumn3 && (
-        <GridItem cols={4}>
-          {documentToReactComponents(contentColumn3)}
-        </GridItem>
+        <TextSection>{documentToReactComponents(contentColumn3)}</TextSection>
       )}
-    </Grid>
+    </TextContainer>
   );
 };
 
