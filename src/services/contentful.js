@@ -111,3 +111,41 @@ export const fetchAllProjects = async () => {
     throw new Error(error);
   }
 };
+
+export const fetchProductContentBySlug = async (slug) => {
+  try {
+    const response = await client.getEntries({
+      content_type: "product",
+      "fields.slug[in]": slug,
+      include: 2,
+    });
+
+    if (!response?.items?.length) {
+      return { error: true };
+    }
+
+    return {
+      error: false,
+      product: { id: response.items[0].sys.id, ...response.items[0].fields },
+    };
+  } catch (error) {
+    throw new Error(error);
+  }
+};
+
+export const fetchAllProducts = async () => {
+  try {
+    const response = await client.getEntries({
+      content_type: "product",
+      include: 2,
+    });
+
+    if (!response?.items?.length) {
+      return { error: true };
+    }
+
+    return { error: false, products: response.items };
+  } catch (error) {
+    throw new Error(error);
+  }
+};

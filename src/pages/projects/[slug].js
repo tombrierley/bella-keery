@@ -6,7 +6,7 @@ import {
   fetchAllProjects,
 } from "@services/contentful";
 
-const CmsPage = ({ error, project, general, ...props }) => {
+const ProjectPage = ({ error, project, general, ...props }) => {
   if (error) return <PageNotFound {...general} />;
 
   return <Page {...general} {...project} {...props} />;
@@ -15,9 +15,9 @@ const CmsPage = ({ error, project, general, ...props }) => {
 export async function getStaticPaths() {
   const { projects } = await fetchAllProjects(false);
 
-  const paths = projects.map((projects) => ({
+  const paths = projects.map((project) => ({
     params: {
-      slug: projects.fields.slug,
+      slug: project.fields.slug,
     },
   }));
 
@@ -38,4 +38,4 @@ export const getStaticProps = async (context) => {
   };
 };
 
-export default CmsPage;
+export default ProjectPage;
