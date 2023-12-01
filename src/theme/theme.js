@@ -106,7 +106,7 @@ const getTheme = (generalSettings) => ({
       backgroundColor: pallette.primary,
     },
     body: {
-      backgroundColor: pallette.white,
+      backgroundColor: pallette.cream,
       color: pallette.black,
       fontFamily: fonts.base,
       fontSize: sizes.base,
