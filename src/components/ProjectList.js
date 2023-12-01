@@ -9,7 +9,27 @@ import isArrayWithLength from "@utils/isArrayWithLength";
 import generateEntryUrl from "@utils/generateEntryUrl";
 import isLandscape from "@utils/isLandscape";
 
+const GridText = styled.div`
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  text-align: center;
+  width: 100%;
+  padding: ${(props) => props.theme.spacing.medium};
+  visibility: hidden;
+
+  h4,
+  h5 {
+    color: ${(props) => props.theme.pallette.cream};
+  }
+`;
+
+const ImageWrapper = styled.div``;
+
 const GridLink = styled.a`
+  background-color: ${(props) => props.theme.pallette.primary};
   position: relative;
   text-decoration: none;
   cursor: pointer;
@@ -17,14 +37,16 @@ const GridLink = styled.a`
   display: block;
 
   &:hover {
-    filter: brightness(60%);
-    text-decoration: underline;
-  }
-`;
+    ${GridText} {
+      visibility: visible;
+    }
 
-const GridText = styled.div`
-  padding: ${(props) => props.theme.spacing.small} 0
-    ${(props) => props.theme.spacing.base} 0;
+    ${ImageWrapper} {
+      opacity: 0.5;
+      mix-blend-mode: screen;
+      filter: saturate(0%) contrast(1.5);
+    }
+  }
 `;
 
 const ProjectList = ({ projects, ...props }) => {
@@ -43,13 +65,15 @@ const ProjectList = ({ projects, ...props }) => {
           <GridItem key={sys.id} cols={isImageLandscape ? 12 : 6}>
             <Link href={href} legacyBehavior>
               <GridLink>
-                <ImageLoader
-                  alt={fields?.name}
-                  imageUrl={`${fields?.mainImage?.fields?.file?.url}?w=${
-                    isImageLandscape ? "2000" : "1000"
-                  }`}
-                  landscape={isImageLandscape}
-                />
+                <ImageWrapper>
+                  <ImageLoader
+                    alt={fields?.name}
+                    imageUrl={`${fields?.mainImage?.fields?.file?.url}?w=${
+                      isImageLandscape ? "2000" : "1000"
+                    }`}
+                    landscape={isImageLandscape}
+                  />
+                </ImageWrapper>
 
                 <GridText>
                   <h4>{fields?.name}</h4>

@@ -8,6 +8,7 @@ const GlobalStyles = createGlobalStyle`
   *:before,
   *:after {
     box-sizing: border-box;
+    font-smoothing: antialiased;
   }
 
   *:focus {

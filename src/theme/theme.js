@@ -1,16 +1,16 @@
 import { css } from "styled-components";
-import { Chango, Space_Mono } from "@next/font/google";
+import { Shrikhand, Anonymous_Pro } from "next/font/google";
 
-const chango = Chango({ subsets: ["latin"], weight: ["400"] });
+const shrikhand = Shrikhand({ subsets: ["latin"], weight: ["400"] });
 
-const spaceMono = Space_Mono({
+const anonymousPro = Anonymous_Pro({
   weight: ["400", "700"],
   style: ["normal", "italic"],
   subsets: ["latin"],
 });
 
 const sizes = {
-  xxs: "10px",
+  xxs: "11px",
   xs: "12px",
   sm: "14px",
   base: "16px",
@@ -18,7 +18,7 @@ const sizes = {
   lg: "24px",
   xl: "32px",
   xxl: "48px",
-  xxxl: "86px",
+  xxxl: "48px",
 };
 
 const fontWeights = {
@@ -31,7 +31,7 @@ const fontWeights = {
 };
 
 const spacing = {
-  xSmall: "6px",
+  xSmall: "8px",
   small: "12px",
   base: "24px",
   medium: "36px",
@@ -43,15 +43,16 @@ const spacing = {
 
 const pallette = {
   white: "#FFFFFF",
+  cream: "#FFFCF5",
   grey: "#eeeeee",
   black: "#000000",
-  primary: "#2569B0",
+  primary: "#2972B6",
   secondary: "#da964f",
 };
 
 const fonts = {
-  base: spaceMono.style.fontFamily,
-  alt: chango.style.fontFamily,
+  base: anonymousPro.style.fontFamily,
+  alt: shrikhand.style.fontFamily,
 };
 
 const getTheme = (generalSettings) => ({
@@ -80,7 +81,14 @@ const getTheme = (generalSettings) => ({
   layout: {
     appMaxWidth: "1024px",
     containerPadding: spacing.base,
-    paddingTop: spacing.xxLarge,
+    paddingTop: spacing.base,
+  },
+  header: {
+    background: pallette.primary,
+    color: pallette.cream,
+    padding: spacing.xSmall,
+    fontSize: sizes.xxs,
+    fontWeight: fontWeights.bold,
   },
   grid: {
     gutter: spacing.base,
@@ -91,7 +99,7 @@ const getTheme = (generalSettings) => ({
     background: pallette.white,
   },
   body: {
-    background: pallette.white,
+    background: pallette.cream,
   },
   typography: {
     html: {
@@ -203,19 +211,14 @@ const getTheme = (generalSettings) => ({
   },
   navigation: {
     fontFamily: fonts.alt,
-    fontSize: sizes.xl,
-    fontSizeMedium: sizes.xxl,
+    fontSize: sizes.md,
+    fontSizeMedium: sizes.lg,
     fontSizeLarge: sizes.xxxl,
     color: pallette.primary,
     hoverColor: pallette.secondary,
-    zIndex: 1000,
-    height: "16px",
-    heightMedium: "38px",
-    heightLarge: "64px",
-    border: "none",
     padding: spacing.small,
     paddingMedium: spacing.base,
-    paddingLarge: spacing.medium,
+    paddingLarge: spacing.base,
   },
 
   spacing,

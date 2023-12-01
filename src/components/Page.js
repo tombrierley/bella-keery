@@ -13,14 +13,10 @@ const Page = ({
 }) => {
   return (
     <Layout {...props}>
-      {!!(contentColumn1 || contentColumn2 || contentColumn3) && (
-        <RichText
-          contentColumn1={contentColumn1}
-          contentColumn2={contentColumn2}
-          contentColumn3={contentColumn3}
-        />
-      )}
+      {!!contentColumn1 && <RichText content={contentColumn1} />}
       {!!projects && <ProjectList projects={projects} />}
+      {!!contentColumn2 && <RichText content={contentColumn2} />}
+      {!!contentColumn3 && <RichText content={contentColumn3} />}
       {!!images && <ImageList images={images} />}
     </Layout>
   );
