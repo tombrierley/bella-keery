@@ -4,42 +4,50 @@ import Link from "next/link";
 import generateEntryUrl from "@utils/generateEntryUrl";
 
 const Wrapper = styled.nav`
-  padding: ${(props) => props.theme.navigation.padding};
+  ${(props) => props.theme.breakpoints.medium`
 
-  ${(props) => props.theme.breakpoints.small`
-   padding: ${(props) => props.theme.navigation.paddingMedium};
+    padding: ${props.theme.spacing.small} 0 0
+      ${props.theme.spacing.base};
+    min-width: 240px;
   `}
+`;
 
-  ${(props) => props.theme.breakpoints.large`
-    padding: ${(props) => props.theme.navigation.paddingLarge};
+const HeaderTitle = styled.h1`
+  color: ${(props) => props.theme.header.color};
+  text-transform: uppercase;
+  font-size: ${(props) => props.theme.header.fontSize};
+  font-weight: ${(props) => props.theme.header.fontWeight};
+
+  ${(props) => props.theme.breakpoints.medium`
+    text-align: right;
   `}
 `;
 
 const NavList = styled.ul`
-  width: 100%;
+  padding: ${(props) => props.theme.spacing.small} 0;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
+  gap: ${(props) => props.theme.spacing.base};
+
+  ${(props) => props.theme.breakpoints.medium`
+    padding: ${(props) => props.theme.spacing.base} 0;
+    display: block;
+  `}
 `;
 
 const NavItem = styled.li`
-  font-family: ${(props) => props.theme.navigation.fontFamily};
+  color: ${(props) => props.theme.navigation.color};
   font-size: ${(props) => props.theme.navigation.fontSize};
-  display: flex;
-  align-items: center;
+  font-weight: ${(props) => props.theme.navigation.fontWeight};
   text-transform: uppercase;
 
-  ${(props) => props.theme.breakpoints.small`
-    font-size: ${(props) => props.theme.navigation.fontSizeMedium};
-  `}
-
-  ${(props) => props.theme.breakpoints.large`
-    font-size: ${(props) => props.theme.navigation.fontSizeLarge};
+  ${(props) => props.theme.breakpoints.medium`
+    text-align: right;
   `}
 `;
 
 const NavLink = styled.a`
   color: ${(props) => props.theme.navigation.color};
+  font-weight: ${(props) => props.theme.navigation.fontWeight};
   text-decoration: none;
   white-space: nowrap;
   line-height: 1;
@@ -50,9 +58,11 @@ const NavLink = styled.a`
   }
 `;
 
-const Navigation = ({ items }) => {
+const Navigation = ({ items, name }) => {
   return (
     <Wrapper>
+      <HeaderTitle>Bella Keery</HeaderTitle>
+
       <NavList>
         {items?.map(({ fields, sys }) => {
           const href = generateEntryUrl({ fields, sys });

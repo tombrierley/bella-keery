@@ -1,12 +1,22 @@
 import { css } from "styled-components";
-import { Shrikhand, Anonymous_Pro } from "next/font/google";
+import { Shrikhand } from "next/font/google";
+import localFont from "next/font/local";
 
 const shrikhand = Shrikhand({ subsets: ["latin"], weight: ["400"] });
 
-const anonymousPro = Anonymous_Pro({
-  weight: ["400", "700"],
-  style: ["normal", "italic"],
-  subsets: ["latin"],
+const clearSans = localFont({
+  src: [
+    {
+      path: '../fonts/ClearSans-Regular-webfont.woff',
+      weight: '400',
+      style: 'normal',
+    },
+    {
+      path: '../fonts/ClearSans-Bold-webfont.woff',
+      weight: '700',
+      style: 'normal',
+    },
+  ],
 });
 
 const sizes = {
@@ -43,15 +53,15 @@ const spacing = {
 
 const pallette = {
   white: "#FFFFFF",
-  cream: "#FFFCF5",
+  cream: "#fffef7",
   grey: "#eeeeee",
   black: "#000000",
-  primary: "#2972B6",
+  primary: "#080096",
   secondary: "#da964f",
 };
 
 const fonts = {
-  base: anonymousPro.style.fontFamily,
+  base: clearSans.style.fontFamily,
   alt: shrikhand.style.fontFamily,
 };
 
@@ -79,19 +89,19 @@ const getTheme = (generalSettings) => ({
     `,
   },
   layout: {
-    appMaxWidth: "1024px",
-    containerPadding: spacing.base,
+    appMaxWidth: "1920px",
+    containerPadding: spacing.xLarge,
     paddingTop: spacing.base,
   },
   header: {
     background: pallette.primary,
-    color: pallette.cream,
+    color: pallette.primary,
     padding: spacing.xSmall,
-    fontSize: sizes.xxs,
+    fontSize: sizes.md,
     fontWeight: fontWeights.bold,
   },
   grid: {
-    gutter: spacing.base,
+    gutter: spacing.small,
     totalCols: 12,
   },
   highlight: {
@@ -162,11 +172,11 @@ const getTheme = (generalSettings) => ({
     h4: {
       color: pallette.black,
       fontFamily: fonts.base,
-      fontSize: sizes.md,
+      fontSize: sizes.sm,
       fontSizeMobile: sizes.sm,
-      fontWeight: fontWeights.bold,
+      fontWeight: fontWeights.normal,
       letterSpacing: 0,
-      lineHeight: 1.6,
+      lineHeight: 1.3,
       marginBottom: 0,
       marginTop: 0,
       textTransform: "uppercase",
@@ -174,11 +184,11 @@ const getTheme = (generalSettings) => ({
     h5: {
       color: pallette.black,
       fontFamily: fonts.base,
-      fontSize: sizes.md,
+      fontSize: sizes.sm,
       fontSizeMobile: sizes.sm,
       fontWeight: fontWeights.normal,
       letterSpacing: 0,
-      lineHeight: 1.6,
+      lineHeight: 1.3,
       marginBottom: 0,
       marginTop: 0,
       textTransform: "none",
@@ -210,15 +220,8 @@ const getTheme = (generalSettings) => ({
     },
   },
   navigation: {
-    fontFamily: fonts.alt,
-    fontSize: sizes.md,
-    fontSizeMedium: sizes.lg,
-    fontSizeLarge: sizes.xxxl,
-    color: pallette.primary,
-    hoverColor: pallette.secondary,
-    padding: spacing.small,
-    paddingMedium: spacing.base,
-    paddingLarge: spacing.base,
+    fontSize: sizes.sm,
+    fontWeight: fontWeights.normal,
   },
 
   spacing,

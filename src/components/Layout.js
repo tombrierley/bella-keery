@@ -2,17 +2,23 @@ import { NextSeo } from "next-seo";
 import { useContext } from "react";
 import styled from "styled-components";
 
-import Header from "@components/Header";
 import Navigation from "@components/Navigation";
 import Container from "@components/Container";
 import Footer from "@components/Footer";
 
 import { SettingsContext } from "@providers/settings";
 
-const MainContent = styled.main`
+const Wrapper = styled.div`
   padding-top: ${(props) => props.theme.layout.paddingTop};
   min-height: 100vh;
+
+  ${(props) => props.theme.breakpoints.medium`
+    display: flex;
+    flex-direction: row-reverse;
+  `}
 `;
+
+const Main = styled.main``;
 
 const Layout = ({ children, name }) => {
   const { settings } = useContext(SettingsContext);
@@ -28,13 +34,12 @@ const Layout = ({ children, name }) => {
         title={`${settings.defaultTitle} - ${name}`}
       />
 
-      <Header name={settings.defaultTitle} />
-
-      {settings?.menuItems?.length && <Navigation items={settings.menuItems} />}
-
-      <MainContent>
-        <Container>{children}</Container>
-      </MainContent>
+      <Container>
+        <Wrapper>
+          <Navigation name={settings.defaultTitle} items={settings.menuItems} />
+          <Main>{children}</Main>
+        </Wrapper>
+      </Container>
 
       <Footer text={settings.footerText} />
     </>

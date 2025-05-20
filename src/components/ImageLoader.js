@@ -17,7 +17,7 @@ const Wrapper = styled.figure`
   ${(props) =>
     props.landscape &&
     `
-    padding-bottom: ${(1 / 1.5) * 100}%;
+    padding-bottom: ${(1 / 1.36666) * 100}%;
   `}
 `;
 

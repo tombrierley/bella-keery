@@ -17,7 +17,7 @@ const ImageList = ({ images, ...props }) => {
       {images?.map(({ fields, sys }) => {
         if (fields?.file?.contentType === "video/mp4") {
           return (
-            <GridItem key={sys.id} cols={6}>
+            <GridItem key={sys.id} cols={6} colsSm={4}>
               <ReactPlayer
                 url={fields?.file?.url}
                 playsinline
@@ -33,7 +33,11 @@ const ImageList = ({ images, ...props }) => {
           const isImageLandscape = isLandscape(fields?.file?.details?.image);
 
           return (
-            <GridItem key={sys.id} cols={isImageLandscape ? 12 : 6}>
+            <GridItem
+              key={sys.id}
+              cols={isImageLandscape ? 12 : 6}
+              colsSm={isImageLandscape ? 8 : 4}
+            >
               <ImageLoader
                 alt={fields?.name}
                 imageUrl={`${fields?.file?.url}?w=${

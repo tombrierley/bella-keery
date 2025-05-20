@@ -10,26 +10,24 @@ import generateEntryUrl from "@utils/generateEntryUrl";
 import isLandscape from "@utils/isLandscape";
 
 const GridText = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   z-index: 1;
-  text-align: center;
   width: 100%;
-  padding: ${(props) => props.theme.spacing.medium};
-  visibility: hidden;
+  padding-top: ${(props) => props.theme.spacing.small};
 
   h4,
-  h5 {
-    color: ${(props) => props.theme.pallette.cream};
+  h5,
+  strong {
+    color: ${(props) => props.theme.pallette.primary};
   }
+`;
+
+const ImageWrapperOuter = styled.div`
+  background-color: ${(props) => props.theme.pallette.primary};
 `;
 
 const ImageWrapper = styled.div``;
 
 const GridLink = styled.a`
-  background-color: ${(props) => props.theme.pallette.primary};
   position: relative;
   text-decoration: none;
   cursor: pointer;
@@ -37,9 +35,7 @@ const GridLink = styled.a`
   display: block;
 
   &:hover {
-    ${GridText} {
-      visibility: visible;
-    }
+    text-decoration: none;
 
     ${ImageWrapper} {
       opacity: 0.5;
@@ -62,22 +58,29 @@ const ProjectList = ({ projects, ...props }) => {
         );
 
         return (
-          <GridItem key={sys.id} cols={isImageLandscape ? 12 : 6}>
+          <GridItem
+            key={sys.id}
+            cols={isImageLandscape ? 12 : 6}
+            colsSm={isImageLandscape ? 8 : 4}
+          >
             <Link href={href} legacyBehavior>
               <GridLink>
-                <ImageWrapper>
-                  <ImageLoader
-                    alt={fields?.name}
-                    imageUrl={`${fields?.mainImage?.fields?.file?.url}?w=${
-                      isImageLandscape ? "2000" : "1000"
-                    }`}
-                    landscape={isImageLandscape}
-                  />
-                </ImageWrapper>
+                <ImageWrapperOuter>
+                  <ImageWrapper>
+                    <ImageLoader
+                      alt={fields?.name}
+                      imageUrl={`${fields?.mainImage?.fields?.file?.url}?w=${
+                        isImageLandscape ? "2000" : "1000"
+                      }`}
+                      landscape={isImageLandscape}
+                    />
+                  </ImageWrapper>
+                </ImageWrapperOuter>
 
                 <GridText>
-                  <h4>{fields?.name}</h4>
-                  <h5>{fields?.location}</h5>
+                  <h4>
+                    <strong>{fields?.name}</strong> {fields?.location}
+                  </h4>
                 </GridText>
               </GridLink>
             </Link>
