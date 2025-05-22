@@ -69,10 +69,9 @@ const ProjectList = ({ projects, ...props }) => {
                   <ImageWrapper>
                     <ImageLoader
                       alt={fields?.name}
-                      imageUrl={`${fields?.mainImage?.fields?.file?.url}?w=${
-                        isImageLandscape ? "2000" : "1000"
-                      }`}
+                      imageUrl={`https:${fields?.mainImage?.fields?.file?.url}?w=${isImageLandscape ? 1200 : 600}&fit=fill`}
                       landscape={isImageLandscape}
+                      width={isImageLandscape ? 1200 : 600}
                     />
                   </ImageWrapper>
                 </ImageWrapperOuter>

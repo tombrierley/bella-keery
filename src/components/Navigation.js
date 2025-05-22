@@ -58,24 +58,33 @@ const NavLink = styled.a`
   }
 `;
 
+const StickyWrapper = styled.div`
+  ${(props) => props.theme.breakpoints.medium`
+    position: fixed;
+    min-width: 240px;
+  `}
+`;
+
 const Navigation = ({ items, name }) => {
   return (
     <Wrapper>
-      <HeaderTitle>Bella Keery</HeaderTitle>
+      <StickyWrapper>
+        <HeaderTitle>Bella Keery</HeaderTitle>
 
-      <NavList>
-        {items?.map(({ fields, sys }) => {
-          const href = generateEntryUrl({ fields, sys });
+        <NavList>
+          {items?.map(({ fields, sys }) => {
+            const href = generateEntryUrl({ fields, sys });
 
-          return (
-            <NavItem key={sys.id}>
-              <Link href={href} legacyBehavior>
-                <NavLink href={href}>{fields?.name}</NavLink>
-              </Link>
-            </NavItem>
-          );
-        })}
-      </NavList>
+            return (
+              <NavItem key={sys.id}>
+                <Link href={href} legacyBehavior>
+                  <NavLink href={href}>{fields?.name}</NavLink>
+                </Link>
+              </NavItem>
+            );
+          })}
+        </NavList>
+      </StickyWrapper>
     </Wrapper>
   );
 };

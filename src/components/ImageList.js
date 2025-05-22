@@ -40,9 +40,8 @@ const ImageList = ({ images, ...props }) => {
             >
               <ImageLoader
                 alt={fields?.name}
-                imageUrl={`${fields?.file?.url}?w=${
-                  isImageLandscape ? "2000" : "1000"
-                }`}
+                imageUrl={`https:${fields?.file?.url}?w=${isImageLandscape ? 1200 : 600}&fit=fill`}
+                width={isImageLandscape ? 1200 : 600}
                 landscape={isImageLandscape}
               />
             </GridItem>

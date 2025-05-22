@@ -1,4 +1,5 @@
-import { useState, useRef, useEffect } from "react";
+import Image from "next/image";
+import { useState, useRef, useEffect, lazy } from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.figure`
@@ -10,10 +11,6 @@ const Wrapper = styled.figure`
   width: 100%;
   z-index: 1;
 
-  img {
-    display: none;
-  }
-
   ${(props) =>
     props.landscape &&
     `
@@ -21,53 +18,43 @@ const Wrapper = styled.figure`
   `}
 `;
 
-const Background = styled.div`
-  bottom: 0;
-  left: 0;
-  position: absolute;
-  right: 0;
-  top: 0;
-  background-image: url(${(props) => props.imageUrl});
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  opacity: 0;
-  transition: opacity 300ms ease-in 0s;
+// Regex to extract needed parts from Contentful URL
+const contentfulUrlRegex = /\/\/(downloads|images)\.ctfassets\.net\/([^\/]+)\/([^\/]+)\/([^\/]+)\/([^?]+)/;
 
-  ${(props) =>
-    props.isLoaded &&
-    `
-    opacity: 1;
-  `};
-`;
-
-const ImageLoader = ({ imageUrl, alt, ...props }) => {
-  const imgEl = useRef(null);
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  const onImageLoaded = () => {
-    setIsLoaded(true);
+const ImageLoader = ({ imageUrl, alt, landscape, width }) => {
+  // Format URL properly for Contentful Images API
+  const getFormattedImageUrl = (url, width) => {
+    if (!url) return '';
+    
+    // Ensure we have https://
+    const fullUrl = url.startsWith("http") ? url : `https:${url}`;
+    
+    // If no width specified, just return the URL with downloads replaced by images
+    if (!width) {
+      return fullUrl.replace('downloads.ctfassets.net', 'images.ctfassets.net');
+    }
+    
+    // Check if it's a Contentful URL
+    const match = fullUrl.match(contentfulUrlRegex);
+    if (!match) return fullUrl;
+    
+    // Extract parts (now the domain type is at index 1, other indices shifted by 1)
+    const [, , spaceId, assetId, token, filename] = match;
+    
+    // Return properly formatted Contentful Images API URL
+    return `https://images.ctfassets.net/${spaceId}/${assetId}/${token}/${filename}?w=${width}&fit=fill`;
   };
 
-  useEffect(() => {
-    const imgElCurrent = imgEl.current;
-
-    if (imgElCurrent.complete && imgElCurrent.naturalHeight !== 0) {
-      setIsLoaded(true);
-      return;
-    }
-
-    if (imgElCurrent) {
-      imgElCurrent.addEventListener("load", onImageLoaded);
-      return () => imgElCurrent.removeEventListener("load", onImageLoaded);
-    }
-  }, [imgEl]);
-
   return (
-    <Wrapper {...props}>
-      <Background imageUrl={imageUrl} isLoaded={isLoaded} {...props}>
-        <img alt={alt} src={`https:${imageUrl}`} ref={imgEl} />
-      </Background>
+    <Wrapper landscape={landscape}>
+      <Image
+        fill
+        objectFit="cover"
+        alt={alt}
+        src={getFormattedImageUrl(imageUrl, width)}
+        loading={"lazy"}
+        unoptimized
+      />
     </Wrapper>
   );
 };

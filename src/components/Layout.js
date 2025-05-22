@@ -18,7 +18,9 @@ const Wrapper = styled.div`
   `}
 `;
 
-const Main = styled.main``;
+const Main = styled.main`
+  width: 100%;
+`;
 
 const Layout = ({ children, name }) => {
   const { settings } = useContext(SettingsContext);
@@ -37,11 +39,12 @@ const Layout = ({ children, name }) => {
       <Container>
         <Wrapper>
           <Navigation name={settings.defaultTitle} items={settings.menuItems} />
-          <Main>{children}</Main>
+          <Main>
+            {children}
+            <Footer text={settings.footerText} />
+          </Main>
         </Wrapper>
       </Container>
-
-      <Footer text={settings.footerText} />
     </>
   );
 };

@@ -7,14 +7,14 @@ const shrikhand = Shrikhand({ subsets: ["latin"], weight: ["400"] });
 const clearSans = localFont({
   src: [
     {
-      path: '../fonts/ClearSans-Regular-webfont.woff',
-      weight: '400',
-      style: 'normal',
+      path: "../fonts/ClearSans-Regular-webfont.woff",
+      weight: "400",
+      style: "normal",
     },
     {
-      path: '../fonts/ClearSans-Bold-webfont.woff',
-      weight: '700',
-      style: 'normal',
+      path: "../fonts/ClearSans-Bold-webfont.woff",
+      weight: "700",
+      style: "normal",
     },
   ],
 });
@@ -100,6 +100,9 @@ const getTheme = (generalSettings) => ({
     fontSize: sizes.md,
     fontWeight: fontWeights.bold,
   },
+  footer: {
+    color: pallette.primary,
+  },
   grid: {
     gutter: spacing.small,
     totalCols: 12,
@@ -117,7 +120,7 @@ const getTheme = (generalSettings) => ({
     },
     body: {
       backgroundColor: pallette.cream,
-      color: pallette.black,
+      color: pallette.primary,
       fontFamily: fonts.base,
       fontSize: sizes.base,
       fontWeight: fontWeights.normal,
@@ -126,7 +129,7 @@ const getTheme = (generalSettings) => ({
       textTransform: "none",
     },
     p: {
-      color: pallette.black,
+      color: pallette.primary,
       fontFamily: fonts.base,
       fontSize: sizes.base,
       fontWeight: fontWeights.normal,
@@ -137,7 +140,7 @@ const getTheme = (generalSettings) => ({
       textTransform: "none",
     },
     h1: {
-      color: pallette.white,
+      color: pallette.primary,
       fontFamily: fonts.base,
       fontSize: sizes.sm,
       fontWeight: fontWeights.normal,
@@ -148,7 +151,7 @@ const getTheme = (generalSettings) => ({
       textTransform: "none",
     },
     h2: {
-      color: pallette.black,
+      color: pallette.primary,
       fontFamily: fonts.base,
       fontSize: sizes.xxl,
       fontWeight: fontWeights.bold,
@@ -159,7 +162,7 @@ const getTheme = (generalSettings) => ({
       textTransform: "none",
     },
     h3: {
-      color: pallette.black,
+      color: pallette.primary,
       fontFamily: fonts.base,
       fontSize: sizes.xl,
       fontWeight: fontWeights.bold,
@@ -170,7 +173,7 @@ const getTheme = (generalSettings) => ({
       textTransform: "none",
     },
     h4: {
-      color: pallette.black,
+      color: pallette.primary,
       fontFamily: fonts.base,
       fontSize: sizes.sm,
       fontSizeMobile: sizes.sm,
@@ -182,7 +185,7 @@ const getTheme = (generalSettings) => ({
       textTransform: "uppercase",
     },
     h5: {
-      color: pallette.black,
+      color: pallette.primary,
       fontFamily: fonts.base,
       fontSize: sizes.sm,
       fontSizeMobile: sizes.sm,
@@ -194,7 +197,7 @@ const getTheme = (generalSettings) => ({
       textTransform: "none",
     },
     h6: {
-      color: pallette.black,
+      color: pallette.primary,
       fontFamily: fonts.base,
       fontSize: sizes.base,
       fontWeight: fontWeights.bold,
@@ -205,7 +208,7 @@ const getTheme = (generalSettings) => ({
       textTransform: "none",
     },
     strong: {
-      color: pallette.black,
+      color: pallette.primary,
       fontWeight: fontWeights.bold,
     },
     a: {

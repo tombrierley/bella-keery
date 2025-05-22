@@ -4,11 +4,13 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 
 const Wrapper = styled.footer`
   text-align: center;
+  color: ${(props) => props.theme.footer.color};
   padding: ${(props) => props.theme.spacing.large}
     ${(props) => props.theme.spacing.large}
     ${(props) => props.theme.spacing.base};
 
   p {
+    color: ${(props) => props.theme.footer.color};
     font-size: ${(props) => props.theme.sizes.sm};
   }
 `;
