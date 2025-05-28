@@ -11,7 +11,8 @@ const Wrapper = styled.footer`
 
   p {
     color: ${(props) => props.theme.footer.color};
-    font-size: ${(props) => props.theme.sizes.sm};
+    font-size: ${(props) => props.theme.sizes.base};
+    text-transform: uppercase;
   }
 `;
 

@@ -29,7 +29,7 @@ const NavList = styled.ul`
   gap: ${(props) => props.theme.spacing.base};
 
   ${(props) => props.theme.breakpoints.medium`
-    padding: ${(props) => props.theme.spacing.base} 0;
+    padding: ${(props) => props.theme.spacing.large} 0;
     display: block;
   `}
 `;
@@ -39,6 +39,7 @@ const NavItem = styled.li`
   font-size: ${(props) => props.theme.navigation.fontSize};
   font-weight: ${(props) => props.theme.navigation.fontWeight};
   text-transform: uppercase;
+  padding: 1px 0;
 
   ${(props) => props.theme.breakpoints.medium`
     text-align: right;
