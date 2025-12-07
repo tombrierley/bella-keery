@@ -68,18 +68,23 @@ const StickyWrapper = styled.div`
 
 const Navigation = ({ items, name }) => {
   return (
-    <Wrapper>
+    <Wrapper role="navigation" aria-label="Main navigation">
       <StickyWrapper>
         <HeaderTitle>Bella Keery</HeaderTitle>
 
-        <NavList>
+        <NavList role="list">
           {items?.map(({ fields, sys }) => {
             const href = generateEntryUrl({ fields, sys });
 
             return (
-              <NavItem key={sys.id}>
+              <NavItem key={sys.id} role="listitem">
                 <Link href={href} legacyBehavior>
-                  <NavLink href={href}>{fields?.name}</NavLink>
+                  <NavLink 
+                    href={href}
+                    aria-label={`Navigate to ${fields?.name} page`}
+                  >
+                    {fields?.name}
+                  </NavLink>
                 </Link>
               </NavItem>
             );

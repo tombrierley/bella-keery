@@ -36,8 +36,17 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en-gb">
         <Head>
+          <meta name="theme-color" content="#2972B6" />
+          <meta name="apple-mobile-web-app-capable" content="yes" />
+          <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+          <meta name="format-detection" content="telephone=no" />
+          <meta name="mobile-web-app-capable" content="yes" />
+          <meta name="msapplication-config" content="/browserconfig.xml" />
+          <meta name="msapplication-TileColor" content="#2972B6" />
+          
           <link href="/favicon.ico" rel="icon" />
           <link rel="manifest" href="/manifest.webmanifest" />
+          <link rel="canonical" href={`https://bellakeery.com${this.props.__NEXT_DATA__.page}`} />
 
           <Script
             src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}

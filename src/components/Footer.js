@@ -17,7 +17,11 @@ const Wrapper = styled.footer`
 `;
 
 const Footer = ({ text }) => {
-  return <Wrapper>{documentToReactComponents(text)}</Wrapper>;
+  return (
+    <Wrapper role="contentinfo" aria-label="Footer">
+      {documentToReactComponents(text)}
+    </Wrapper>
+  );
 };
 
 export default Footer;
